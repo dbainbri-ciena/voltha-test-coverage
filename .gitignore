@@ -1,0 +1,12 @@
+pyvoltha
+voltctl
+voltha-api-server
+voltha-go
+voltha-lib-go
+voltha-openolt-adapter
+voltha-openonu-adapter
+voltha-protos
+voltha-simolt-adapter
+voltha-simonu-adapter
+voltha-system-tests
+*.swp
