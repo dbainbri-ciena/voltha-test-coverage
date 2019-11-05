@@ -14,13 +14,13 @@ else
     VOPT=""
 fi
 
-REPOS="voltha-bbsim \
+DEFAULT_REPOS="voltha-bbsim \
     voltha-go \
     voltha-openolt-adapter \
     voltha-openonu-adapter \
     pyvoltha"
 
-REPOS="voltha-adtran-adapter \
+DEFAULT_REPOS="voltha-adtran-adapter \
     voltha-api-server \
     voltha-bal \
     voltha-bbsim \
@@ -38,7 +38,7 @@ REPOS="voltha-adtran-adapter \
     voltha-system-tests \
     pyvoltha"
 
-REPOS="voltctl \
+DEFAULT_REPOS="voltctl \
     voltha-api-server \
     voltha-lib-go \
     voltha-go \
@@ -47,6 +47,8 @@ REPOS="voltctl \
     voltha-simonu-adapter \
     -voltha-openonu-adapter \
     -pyvoltha"
+
+REPOS=${REPOS:-$DEFAULT_REPOS}
 
 FORMAT="%s|%s|%s\n"
 
@@ -124,7 +126,7 @@ TAB=$'\t'
                 CMD="print \"%5.1f%%\" % ($TOTAL / $TOTAL_COUNT)"
                 printf "$FORMAT" "$REPO" "=====" "$(python -c "$CMD")"
             else
-                printf "$FORMAT" "$REPO" "*** ERROR ***" "*** ERROR ***"
+                printf "$FORMAT" "$REPO" "=====" "*** ERROR ***"
             fi
         elif [ "$REPO_OPT" != "-" ]; then
             WORK=/tmp/tttt
