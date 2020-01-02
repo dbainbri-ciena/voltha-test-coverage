@@ -6,7 +6,7 @@ set -eu -o pipefail
 
 UPDATE_GIT=${UPDATE_GIT:-no}
 SUBJECT_LEN=${SUBJECT_LEN:-40}
-VERIFIED=${VERIFIED:-yes}
+VERIFIED=${VERIFIED:-no}
 
 if [ "$VERIFIED" == "yes" ]; then
     VOPT="label:verified+"
@@ -165,7 +165,7 @@ TAB=$'\t'
             # Python
             RESET_DIR=$(pwd)
             cd $REPO
-            LINES=$(bash -c "make test 2>&1 | awk 'BEGIN{S=-1};{if (S==1 && !/^-+$/) print}; /^-+$/{S=-S; if (S==-1) exit}' | sed -e 's/[\t ][\t ]*/,/g'")
+            LINES=$(bash -c "make clean test 2>&1 | awk 'BEGIN{S=-1};{if (S==1 && !/^-+$/) print}; /^-+$/{S=-S; if (S==-1) exit}' | sed -e 's/[\t ][\t ]*/,/g'")
             CUR_PKG=
             PKG_COVERAGE=0
             PKG_COUNT=0
@@ -200,4 +200,4 @@ TAB=$'\t'
                 printf "$FORMAT" "$REPO" "=====" "$(python -c "$CMD")"
             fi
         fi
-    done) | column -tx '-s|'
+    done) | column -tx '-s|' | grep -vi "WIP" | grep -vi "t merge" | grep -vi "draft"
