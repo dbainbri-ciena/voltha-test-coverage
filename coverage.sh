@@ -200,4 +200,4 @@ TAB=$'\t'
                 printf "$FORMAT" "$REPO" "=====" "$(python -c "$CMD")"
             fi
         fi
-    done) | column -tx '-s|' | grep -vi "WIP" | grep -vi "t merge" | grep -vi "draft"
+    done) | column -tx '-s|' 
