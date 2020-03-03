@@ -4,9 +4,9 @@
 
 set -eu -o pipefail
 
-UPDATE_GIT=${UPDATE_GIT:-no}
+UPDATE_GIT=${UPDATE_GIT:-yes}
 SUBJECT_LEN=${SUBJECT_LEN:-40}
-VERIFIED=${VERIFIED:-no}
+VERIFIED=${VERIFIED:-all}
 
 if [ "$VERIFIED" == "yes" ]; then
     VOPT="label:verified+"
@@ -33,8 +33,6 @@ DEFAULT_REPOS="voltha-adtran-adapter \
     voltha-openolt-adapter \
     voltha-openonu-adapter \
     voltha-protos \
-    voltha-simolt-adapter \
-    voltha-simonu-adapter \
     voltha-system-tests \
     pyvoltha"
 
@@ -43,8 +41,7 @@ DEFAULT_REPOS="voltctl \
     voltha-lib-go \
     voltha-go \
     voltha-openolt-adapter \
-    voltha-simolt-adapter \
-    voltha-simonu-adapter \
+    ofagent-go \
     -voltha-openonu-adapter \
     -pyvoltha"
 

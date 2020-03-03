@@ -9,4 +9,5 @@ voltha-protos
 voltha-simolt-adapter
 voltha-simonu-adapter
 voltha-system-tests
+ofagent-go
 *.swp
